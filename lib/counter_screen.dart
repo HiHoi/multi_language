@@ -12,11 +12,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  String _selectedLanguage = '2';
+  String _selectedLanguage = 'en';
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _selectedLanguage = context.locale.toString();
+  }
 
   final List<DropdownMenuItem<String>> items = [
-    const DropdownMenuItem(child: Text('한국어'), value: '1'),
-    const DropdownMenuItem(child: Text('영어'), value: '2'),
+    const DropdownMenuItem(child: Text('한국어'), value: 'ko'),
+    const DropdownMenuItem(child: Text('English'), value: 'en'),
   ];
 
   void _incrementCounter() {
@@ -29,10 +35,10 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _selectedLanguage = value!;
       switch (value) {
-        case '1':
+        case 'ko':
           context.setLocale(const Locale('ko'));
           break;
-        case '2':
+        case 'en':
           context.setLocale(const Locale('en'));
           break;
       }
@@ -44,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title).tr(),
+        title: Text(widget.title).tr(args: ['Flutter']),
       ),
       body: Center(
         child: Column(
@@ -60,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const Text(
               'You have pushed the button this many times:',
-            ).tr(),
+            ).tr(namedArgs: {'name': 'Button'}),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,

@@ -1,4 +1,4 @@
 {
-    "Flutter Demo Home Page": "플러터 데모 홈 페이지",
-    "You have pushed the button this many times:": "버튼을 이렇게 많이 눌렀습니다:"
+    "Flutter Demo Home Page": "이것은 {} 데모입니다.",
+    "You have pushed the button this many times:": "{name}을 이렇게 많이 눌렀습니다:"
 }
